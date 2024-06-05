@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LoadingAPI.Models;
 using LoadingAPI.Contexts;
-
+using LoadingAPI.Entities;
 
 [ApiController]
 [Route("api/[controller]")]
