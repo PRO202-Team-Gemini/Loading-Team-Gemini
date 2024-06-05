@@ -19,7 +19,7 @@ const SignIn: React.FC = () => {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setPlayerName(e.currentTarget.value);
     },
-    []
+    [],
   );
 
   const profanityFilter = (text: string) => {
