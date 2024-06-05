@@ -9,7 +9,7 @@ namespace LoadingAPI.Entities
         public Question? Question { get; set; }
         public int AnswerText { get; set; }
         public bool IsChosen { get; set; }
-        public int AffectedStatId { get; set; } //FK
+        public int StatKeyId { get; set; } //FK
         public StatKey? StatKey { get; set; }
         public int NextQuestion { get; set; }
     }
