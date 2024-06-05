@@ -1,6 +1,5 @@
 import React from "react";
 import "./result.css";
-import "../shared/App.css";
 
 /* interface ResultProps {
   data: { label: string; value: number }[];

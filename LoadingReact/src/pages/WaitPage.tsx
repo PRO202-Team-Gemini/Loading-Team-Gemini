@@ -1,5 +1,5 @@
 import React from "react";
-import Wait from "../components/attenion/Wait";
+import Wait from "../components/attenion/WaitItem";
 
 const WaitPage = () => {
   return <Wait />;
