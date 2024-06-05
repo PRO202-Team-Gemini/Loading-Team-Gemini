@@ -11,13 +11,9 @@ const LoadingPlayers = () => {
   const [players, setPlayers] = useState<Player[]>([]);
 
   useEffect(() => {
-    // Utkommenter når vi har server
-    /*
-    const socket = io("http://vår-server-link.com");
-    socket.on("playerConnected", (player) => {
-        setPlayers((prevPlayers) => [...prevPlayers, player]);
-    });
-    */
+    fetch("http://localhost:5157/api/players")
+      .then((response) => response.json())
+      .then((data: Player[]) => setPlayers(data));
   }, []);
 
   return (
@@ -42,5 +38,11 @@ const LoadingPlayers = () => {
     </article>
   );
 };
-
+// Utkommenter når vi har server
+/*
+    const socket = io("http://vår-server-link.com");
+    socket.on("playerConnected", (player) => {
+        setPlayers((prevPlayers) => [...prevPlayers, player]);
+    });
+    */
 export default LoadingPlayers;
