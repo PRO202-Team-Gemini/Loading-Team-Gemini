@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import PlayService from "../../services/PlayerService";
-import { testApiConnection } from "./test";
+import badwords from "./badwords.json";
 
 //TODO Change the styling for "SelectedCharacter" to be more exiting
 //TODO When database is implemented, add a save of username and character to database. Include "list of bad words" to prevent bad usernames.
 
 const SignIn: React.FC = () => {
-  const [player, setPlayer] = useState<string>("");
+  const [playerName, setPlayerName] = useState("");
   const [selectedCharacter, setSelectedCharacter] = useState<string>("");
 
   const characters: string[] = ["fox", "lion", "rabbit", "racoon", "owl"];
@@ -15,23 +15,38 @@ const SignIn: React.FC = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.currentTarget.value);
     switch (e.target.name) {
-      case "player":
-        setPlayer(e.currentTarget.value);
+      case "playerName":
+        setPlayerName(e.currentTarget.value);
+        break;
+      default:
+        console.log("No input");
         break;
       /* case "character":
          setSelectedCharacter(e.currentTarget.files[0]);
          break; */
     }
   };
+  const profanityFilter = (text: string) => {
+    const words = text.toLowerCase();
+    return badwords.some((word) => words.includes(word));
+  };
 
-  testApiConnection();
+  const savePlayer = async () => {
+    try {
+      if (profanityFilter(playerName)) {
+        alert("Brukernavnet ditt inneholder uakseptable ord, prøv på nytt");
+        return;
+      }
 
-  const savePlayer = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    const newPlayer = {
-      name: player,
-      //image: selectedCharacter,
-    };
-    await PlayService.postPlayer(newPlayer /*selectedCharacter*/);
+      const newPlayer = {
+        name: playerName,
+      };
+      await PlayService.postPlayer(newPlayer);
+      console.log(`Player "${playerName}" created successfully`);
+      //setFeedback(`Player "${playerName}" created successfully`);
+    } catch (error) {
+      console.error(`Error creating player ${error}`);
+    }
   };
 
   return (
@@ -44,11 +59,11 @@ const SignIn: React.FC = () => {
           <div>
             <input
               type="text"
-              name="player"
+              name="playerName"
               onChange={handleInputChange}
               className="form-control input-field"
               placeholder="Skriv inn brukernavn..."
-              value={player}
+              value={playerName}
             />
           </div>
         </div>
@@ -74,13 +89,7 @@ const SignIn: React.FC = () => {
         </div>
       </article>
       <div className="text-center">
-        <button
-          className="btn btn-success mb-5"
-          onClick={() => {
-            //console.log("{player} has been saved");
-            savePlayer;
-          }}
-        >
+        <button className="btn btn-success mb-5" onClick={() => savePlayer()}>
           Godta
         </button>
       </div>

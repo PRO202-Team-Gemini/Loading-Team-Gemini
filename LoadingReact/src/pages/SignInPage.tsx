@@ -1,10 +1,10 @@
 import React from "react";
-import CreatePlayer from "../components/play/CreatePlayer.jsx";
+import SignIn from "../components/play/SignIn.js";
 
 const SignInPage = () => {
   return (
     <div>
-      <CreatePlayer />
+      <SignIn />
     </div>
   );
 };
