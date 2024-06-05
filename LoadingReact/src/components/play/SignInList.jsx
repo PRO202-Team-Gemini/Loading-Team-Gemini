@@ -16,10 +16,7 @@ const PlayList = () => {
 
   const getPlayersJSX = () => {
     const playersJSX = player.map((player, i) => (
-      <SignIn
-        key={i}
-        player={player}
-      />
+      <SignIn key={i} player={player} />
     ));
     return playersJSX;
   };
