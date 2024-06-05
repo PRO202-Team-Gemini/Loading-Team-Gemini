@@ -1,7 +1,9 @@
 using LoadingAPI.Interfaces;
 
-namespace LoadingAPI.Models {
-	public class CharacterStat {
+namespace LoadingAPI.Entities 
+{
+	public class CharacterStat 
+	{
 		public int Id {	get; set; }
 		public string Name { get; set; }
 		public int Level { get; set; }
