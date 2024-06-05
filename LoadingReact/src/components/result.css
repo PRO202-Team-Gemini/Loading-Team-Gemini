@@ -1,0 +1,11 @@
+p {
+  font-family: "azeret mono", monospace;
+  color: #dcd7ca;
+  text-align: center;
+  margin-top: 10%;
+}
+.img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

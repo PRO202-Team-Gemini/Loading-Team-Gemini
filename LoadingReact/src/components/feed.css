@@ -1,0 +1,19 @@
+.smileys {
+  display: flex;
+  justify-content: space-between;
+  font-size: 5em;
+}
+
+.smileys :hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.feedback p {
+  font-size: 1em;
+  margin-top: 10%;
+  text-align: center;
+}
