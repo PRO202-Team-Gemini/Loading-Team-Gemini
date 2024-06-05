@@ -21,7 +21,7 @@ const SignIn: FC<IPlayer> = () => {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setPlayerName(e.currentTarget.value);
     },
-    []
+    [],
   );
 
   const profanityFilter = (text: string) => {

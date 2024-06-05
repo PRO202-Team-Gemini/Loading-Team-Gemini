@@ -10,7 +10,7 @@ const Result: React.FC<{
 }> = (
   {
     /*data*/
-  }
+  },
 ) => {
   return (
     <section>
