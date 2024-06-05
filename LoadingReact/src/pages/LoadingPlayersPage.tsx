@@ -1,5 +1,5 @@
 import React from "react";
-import LoadingPlayers from "../components/LoadingPlayers";
+import LoadingPlayers from "../components/waitingRoom/LoadingPlayers";
 
 const LoadingPlayersPage = () => {
   return <LoadingPlayers />;

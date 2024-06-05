@@ -1,13 +1,15 @@
 import React, { useCallback, useState } from "react";
+import { FC } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { useNavigate } from "react-router-dom";
 import PlayService from "../../services/PlayerService";
 import badwords from "./badwords.json";
+import { IPlayer } from "../../interfaces/IPlayer";
 
 //TODO Change the styling for "SelectedCharacter" to be more exiting
 //TODO Add a function to save the selected character to... somewhere
 
-const SignIn: React.FC = () => {
+const SignIn: FC<IPlayer> = () => {
   const [playerName, setPlayerName] = useState("");
   const [selectedCharacter, setSelectedCharacter] = useState<string>("");
   //const [feedback, setFeedback] = useState<string>("");

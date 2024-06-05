@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import PlayService from "../../services/PlayerService";
-import SignIn from "./SignIn";
+import SignInItem from "./SignInItem";
+import { IPlayer } from "../../interfaces/IPlayer";
 
 const PlayList = () => {
-  const [player, setPlayer] = useState("");
+  const [players, setPlayers] = useState<IPlayer[]>([]);
 
   useEffect(() => {
     getPlayersFromService();
@@ -11,14 +12,16 @@ const PlayList = () => {
 
   const getPlayersFromService = async () => {
     const playersFromService = await PlayService.getAllPlayers();
-    setPlayer(playersFromService);
+    setPlayers(playersFromService);
   };
 
   const getPlayersJSX = () => {
-    const playersJSX = player.map((player, i) => (
-      <SignIn
+    const playersJSX = players.map((player: any, i: number) => (
+      <SignInItem
         key={i}
-        player={player}
+        id={player.id}
+        name={player.name}
+        avatar={player.avatar}
       />
     ));
     return playersJSX;

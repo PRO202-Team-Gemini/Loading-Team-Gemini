@@ -1,5 +1,5 @@
 import React from "react";
-import SignIn from "../components/play/SignIn.js";
+import SignIn from "../components/player/SignInItem.js";
 
 const SignInPage = () => {
   return (

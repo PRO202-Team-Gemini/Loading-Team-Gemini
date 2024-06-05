@@ -1,6 +1,8 @@
 # LoadingV2
 
 ## TODO FRONTEND
+###  OBS!! --> DOKUMENTASJON av frontend <--
+
 [ ] Opprette service-fil med oppkobling og spørringer til APIet
 - PlayerService [x] - AnswerService [ ] - Question Service [ ] {Karima/Rebecca}
 
