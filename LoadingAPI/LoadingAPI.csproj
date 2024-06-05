@@ -20,4 +20,10 @@
     <Folder Include="Databases\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Databases\LoadingDb.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
