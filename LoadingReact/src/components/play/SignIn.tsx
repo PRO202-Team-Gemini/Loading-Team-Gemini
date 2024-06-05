@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import PlayService from "../../services/PlayerService";
-import { testApiConnection } from "./test";
 
 //TODO Change the styling for "SelectedCharacter" to be more exiting
 //TODO When database is implemented, add a save of username and character to database. Include "list of bad words" to prevent bad usernames.
@@ -23,8 +22,6 @@ const SignIn: React.FC = () => {
          break; */
     }
   };
-
-  testApiConnection();
 
   const savePlayer = async (e: React.MouseEvent<HTMLButtonElement>) => {
     const newPlayer = {
