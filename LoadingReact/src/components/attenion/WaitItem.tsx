@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "../shared/App.css";
 
 const Wait = () => {
   const [player, setPlayer] = useState({ userName: "", avatar: "" });
