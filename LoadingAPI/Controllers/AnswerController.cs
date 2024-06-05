@@ -1,5 +1,5 @@
 namespace LoadingAPI.Controllers
-
+{
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LoadingAPI.Models;
@@ -17,4 +17,5 @@ public class AnswerController : ControllerBase
         context = _context;
     }
 
+}
 }
