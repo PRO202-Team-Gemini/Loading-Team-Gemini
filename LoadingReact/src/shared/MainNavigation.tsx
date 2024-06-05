@@ -13,7 +13,7 @@ const MainNavigation = () => {
 
           <Link to="signIn"> Sign in </Link>
 
-          <Link to="loadingPlayers">Loading Players</Link>
+          <Link to="waiting-room">Loading Players</Link>
 
           <Link to="wait">Wait</Link>
 

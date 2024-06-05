@@ -26,7 +26,7 @@ const RoutingMain = () => {
           <Route path="/" element={<LandingPage />} />
           <Route path="turnPhone" element={<TurnPhonePage />} />
           <Route path="signIn" element={<SignInPage />} />
-          <Route path="loadingPlayers" element={<LoadingPlayersPage />} />
+          <Route path="waiting-room" element={<LoadingPlayersPage />} />
           <Route path="wait" element={<WaitPage />} />
           <Route path="option" element={<OptionPage />} />
           <Route path="result" element={<ResultPage />} />

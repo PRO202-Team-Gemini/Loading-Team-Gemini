@@ -19,7 +19,6 @@ const PlayList = () => {
       <SignIn
         key={i}
         player={player}
-        //image={player.image}
       />
     ));
     return playersJSX;
@@ -27,7 +26,6 @@ const PlayList = () => {
 
   return (
     <div>
-      <h1>Sign In</h1>
       <div>{getPlayersJSX()}</div>
     </div>
   );
