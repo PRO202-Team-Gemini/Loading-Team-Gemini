@@ -24,6 +24,10 @@ const Option = () => {
     }
   }, [question]);
 
+  const handleClick = (): void => {
+    navigate("/result");
+  };
+
   return (
     <article>
       <section className="text-center rounded shadow">
@@ -42,7 +46,7 @@ const Option = () => {
           <div className="col-6 mb-3" key={answer + "-" + index}>
             <button
               className="card2 answer-box text-center rounded w-100 p-3"
-              onClick={() => navigate("/result")}
+              onClick={handleClick}
             >
               {answer}
             </button>
@@ -54,7 +58,7 @@ const Option = () => {
           <div className="col-6 mb-3" key={answer + "-" + (index + 2)}>
             <button
               className="card2 answer-box text-center rounded w-100 p-3"
-              onClick={() => navigate("/result")}
+              onClick={handleClick}
             >
               {answer}
             </button>

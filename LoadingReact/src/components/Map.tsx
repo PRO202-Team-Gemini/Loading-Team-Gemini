@@ -1,7 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Map = () => {
-  return <div>Map</div>;
+  const navigate = useNavigate();
+  const handleClick = (): void => {
+    navigate("/feedback");
+  };
+  return (
+    <article onClick={handleClick}>
+      <div>Map</div>
+    </article>
+  );
 };
 
 export default Map;
