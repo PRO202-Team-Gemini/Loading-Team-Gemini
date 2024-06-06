@@ -7,9 +7,10 @@ interface PlayerProviderProps {
 
 export const PlayerProvider = ({ children }: PlayerProviderProps) => {
   const [player, setPlayer] = useState({});
+  const [selectedCaracter, setSelectedCaracter] = useState(null);
 
   return (
-    <PlayerContext.Provider value={{ player, setPlayer }}>
+    <PlayerContext.Provider value={{ player, setPlayer, selectedCaracter, setSelectedCaracter }}>
       {children}
     </PlayerContext.Provider>
   );

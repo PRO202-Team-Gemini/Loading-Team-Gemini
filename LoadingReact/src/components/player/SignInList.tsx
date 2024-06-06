@@ -12,6 +12,7 @@ const PlayList = () => {
 
   const getPlayersFromService = async () => {
     const playersFromService = await PlayService.getAllPlayers();
+    console.log("Players from Service ", playersFromService);
     setPlayers(playersFromService);
   };
 
