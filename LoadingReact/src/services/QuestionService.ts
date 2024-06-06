@@ -2,7 +2,7 @@ import axios from "axios";
 import { IQuestion } from "../interfaces/IQuestion";
 
 const QuestionService = (() => {
-  const questionController = "http://localhost:5157/api/Questions";
+  const questionController = "http://localhost:5157/api/Question";
 
   const getAllQuestions = async (): Promise<IQuestion[]> => {
     try {

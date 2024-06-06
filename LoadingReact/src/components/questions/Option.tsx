@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Option = () => {
   const [question, setQuestion] = useState("");
   const [answers, setAnswers] = useState(["", "", "", ""]);
   const [timer, setTimer] = useState(60);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // simulerer en fetch fra  backend, endre når backend er på plass
@@ -38,7 +40,10 @@ const Option = () => {
       <section className="row">
         {answers.slice(0, 2).map((answer, index) => (
           <div className="col-6 mb-3" key={answer + "-" + index}>
-            <button className="card2 answer-box text-center rounded w-100 p-3">
+            <button
+              className="card2 answer-box text-center rounded w-100 p-3"
+              onClick={() => navigate("/result")}
+            >
               {answer}
             </button>
           </div>
@@ -47,7 +52,10 @@ const Option = () => {
       <section className="row">
         {answers.slice(2).map((answer, index) => (
           <div className="col-6 mb-3" key={answer + "-" + (index + 2)}>
-            <button className="card2 answer-box text-center rounded w-100 p-3">
+            <button
+              className="card2 answer-box text-center rounded w-100 p-3"
+              onClick={() => navigate("/result")}
+            >
               {answer}
             </button>
           </div>
@@ -56,5 +64,22 @@ const Option = () => {
     </article>
   );
 };
+
+/*
+ QuestionService.getAllQuestions()
+     .then((questions) => {
+       const randomQuestion =
+         questions[Math.floor(Math.random() * questions.length)];
+       setQuestion(randomQuestion.questionText);
+       setAnswers(Array(randomQuestion.answerAmount).fill(null));
+       setLoading(false);
+     })
+     .catch((error) => {
+       console.error("Error fetching question", error);
+       setAnswers([]); // set to empty array if API request fails
+       setLoading(false);
+     });
+ }, []);
+ */
 
 export default Option;
