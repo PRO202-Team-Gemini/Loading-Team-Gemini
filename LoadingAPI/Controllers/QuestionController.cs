@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LoadingAPI.Models;
 using LoadingAPI.Contexts;
+using LoadingAPI.Entities;
 
 
 [ApiController]
@@ -17,4 +18,25 @@ public class QuestionController : ControllerBase
     {
         context = _context;
     }
+
+    [HttpGet]
+    public async Task<ActionResult<List<Question>>> Get()
+    {
+        try
+        {
+            List<Question> questions = await context.Questions.ToListAsync();
+            if (questions != null)
+               {
+                return Ok(questions);
+                }
+            else
+            {
+                return NotFound();
+            }
+            }
+            catch
+            {
+                return StatusCode(500);
+            }    
+}
 }
