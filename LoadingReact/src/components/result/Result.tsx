@@ -25,7 +25,7 @@ const Result: React.FC<{
         <div>
           {/* Placeholder for the graph */}
           <div className="img">
-            <img src="./public/images/resultater.png" />
+            <img src="./images/resultater.png" />
           </div>
           <div id="graph"></div>
         </div>

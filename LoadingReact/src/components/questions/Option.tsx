@@ -45,7 +45,7 @@ const Option = () => {
         {answers.slice(0, 2).map((answer, index) => (
           <div className="col-6 mb-3" key={answer + "-" + index}>
             <button
-              className="card2 answer-box text-center rounded w-100 p-3"
+              className="card3 answer-box text-center rounded w-100 p-3"
               onClick={handleClick}
             >
               {answer}
@@ -57,7 +57,7 @@ const Option = () => {
         {answers.slice(2).map((answer, index) => (
           <div className="col-6 mb-3" key={answer + "-" + (index + 2)}>
             <button
-              className="card2 answer-box text-center rounded w-100 p-3"
+              className="card3 answer-box text-center rounded w-100 p-3"
               onClick={handleClick}
             >
               {answer}

@@ -17,35 +17,46 @@ const LoadingPlayers = () => {
   useEffect(() => {
     const fetchPlayers = async () => {
       const players = await PlayerService.getAllPlayers();
+      console.log(players);
       setPlayers(players);
     };
     fetchPlayers();
   }, []);
 
   const handleClick = (): void => {
-    navigate("/result");
+    navigate("/wait");
   };
   return (
-    <article className="col-12 col-md-6 col-lg-4" onClick={handleClick}>
-      <h1 className="text-center"> Venter på spillere </h1>
-      <div className=" text-center card2 shadow rounded p-1 m-1 card-body">
-        {/*players.length === 0 /isLoading &&*/ <div className="spinner"></div>}
-        <div className="text-center">
+    <section
+      className="background d-flex justify-content-center align-items-center"
+      style={{ height: "100vh" }}
+    >
+      <article
+        className="p-3 d-flex flex-column justify-content-center align-items-center"
+        onClick={handleClick}
+      >
+        <h1 className="text-center"> Venter på spillere </h1>
+        <div className="card2 shadow rounded p-1 m-1 card-body text-center">
+          {
+            /*players.length === 0 /isLoading &&*/ <div className="spinner"></div>
+          }
           <p className="text-center player-count">
             {" "}
             <FontAwesomeIcon icon={faUser} />
             <br />
             <span>{players.length}</span>
           </p>
-          {players.length > 0
-            ? players
-                .slice(-5)
-                .reverse()
-                .map((player, index) => <div key={index}>{player.name}</div>)
-            : "--Placeholder--"}
+          <div className="text-center">
+            {players.length > 0
+              ? players
+                  .slice(-5)
+                  .reverse()
+                  .map((player, index) => <div key={index}>{player.name}</div>)
+              : "--Placeholder--"}
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
+    </section>
   );
 };
 /*.then((response) => response.json())

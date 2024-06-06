@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { LANDING_TEXT } from "./constants/landingpageText";
 
-
 const { TITLE, SUBTITLE, PARAGRAPH1, BUTTON_TEXT } = LANDING_TEXT;
 
 const Landing = () => {
@@ -17,7 +16,7 @@ const Landing = () => {
         <h1>{TITLE}</h1>
         <h4>{SUBTITLE}</h4>
       </div>
-      <div className="text-center card2 shadow rounded p-4 m-2 card-body">
+      <div className="text-center card3 shadow rounded p-4 m-2 card-body">
         <p>{PARAGRAPH1}</p>
         <button
           type="button"

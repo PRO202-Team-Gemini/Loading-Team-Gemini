@@ -35,6 +35,12 @@ body {
 .card2 {
   background-color: #3f4e4f;
   position: relative;
+  width: 80vw;
+  height: 60vh;
+}
+.card3 {
+  background-color: #3f4e4f;
+  position: relative;
 }
 .answer-box {
   background-color: #dcd7ca;
