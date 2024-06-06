@@ -38,8 +38,9 @@ const SignIn: FC<IPlayer> = () => {
         return;
       }
 
-      await PlayService.postPlayer({ name: playerName });
-      setPlayer({ name: playerName });
+      await PlayService.postPlayer({ name: playerName, character: selectedCharacter});
+      setPlayer({ name: playerName});
+      setSelectedCharacter(selectedCharacter);
       //setFeedback(`Player "${playerName}" created successfully`);
 
       // Navigate to the waiting room
@@ -72,7 +73,10 @@ const SignIn: FC<IPlayer> = () => {
             {characters.map((character) => (
               <Carousel.Item
                 key={character}
-                onClick={() => setSelectedCharacter(character)}
+                onClick={() => {
+                  setSelectedCharacter(character);
+                  console.log(`Selected character: ${character}`);
+                }}
               >
                 <img
                   className={

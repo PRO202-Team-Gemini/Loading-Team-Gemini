@@ -33,6 +33,11 @@ const PlayerService = (() => {
     try {
       const result = await axios.post(playerController, newPlayer);
       console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+    
 
       /* const formData = new FormData();
     formData.append("formFile", image);
@@ -44,10 +49,6 @@ const PlayerService = (() => {
         headers: {'Content-Type': 'multipart/form-data'} // headers allows us to send form data
     });
     formData.delete('formFile'); */
-    } catch (e) {
-      console.log(e);
-    }
-  };
 
   return {
     getAllPlayers,

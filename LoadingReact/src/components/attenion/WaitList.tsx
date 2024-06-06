@@ -24,9 +24,7 @@ const WaitList = () => {
 
     const getPlayersJSX = () => {
         return players.map((player, i) => {
-            return (
-                <WaitItem key={i} name={player.name} id={player.id} avatar={player.avatar} />
-            );
+            return <WaitItem key={i} player={player} />;
         });
     }
 
