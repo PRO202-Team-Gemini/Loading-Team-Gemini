@@ -1,5 +1,8 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
+import { LANDING_TEXT } from "./constants/landingpageText";
+
+
+const { TITLE, SUBTITLE, PARAGRAPH1, BUTTON_TEXT } = LANDING_TEXT;
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -7,18 +10,22 @@ const Landing = () => {
   const handleClick = () => {
     navigate("/turnPhone");
   };
+
   return (
-    <article className="col-12 col-md-6 col-lg-4">
-      <h1 className="text-center"> LOADING </h1>
-      <h4 className="text-center"> Velkommen til forestilling!</h4>
-      <div className=" text-center card2 shadow rounded p-2 m-2 card-body">
-        <p className="text-center">
-          Dette er en interaktiv forestilling hvor du bestemmer handlingen.{" "}
-          <br></br> Velg navn og karakter på neste side, følg deretter med på
-          scenen for instrukser.
-        </p>
-        <button type="button" className="btn btn-success" onClick={handleClick}>
-          START
+    <article className="col-12 col-md-8 col-lg-6 mx-auto my-5">
+      <div className="text-center">
+        <h1>{TITLE}</h1>
+        <h4>{SUBTITLE}</h4>
+      </div>
+      <div className="text-center card2 shadow rounded p-4 m-2 card-body">
+        <p>{PARAGRAPH1}</p>
+        <button
+          type="button"
+          className="btn btn-success mt-3"
+          onClick={handleClick}
+          aria-label={BUTTON_TEXT}
+        >
+          {BUTTON_TEXT}
         </button>
       </div>
     </article>

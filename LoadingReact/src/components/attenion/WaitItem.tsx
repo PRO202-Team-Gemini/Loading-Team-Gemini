@@ -1,14 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { PlayerContext } from "../../context/PlayerContext";
 
 const Wait = () => {
-  const [player, setPlayer] = useState({ userName: "", avatar: "" });
-
-  useEffect(() => {
-    // simulerer en fetch fra en backend
-    setTimeout(() => {
-      setPlayer({ userName: "CoolGuy04", avatar: "fox.png" });
-    }, 1000);
-  }, []);
+  const { player } = useContext(PlayerContext);
 
   return (
     <article className="row justify-content-center align-items-center mt-5">
@@ -20,7 +14,7 @@ const Wait = () => {
         />
       </section>
       <section className="col-6 text-center">
-        <h1>{player.userName}</h1>
+        <h1>{player.name}</h1>
         <br />
         <h4>Følg med på scenen</h4>
       </section>
