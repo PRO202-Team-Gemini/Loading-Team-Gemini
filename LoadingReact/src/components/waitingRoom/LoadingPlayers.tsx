@@ -30,9 +30,10 @@ const LoadingPlayers = () => {
             <span>{players.length}</span>
           </p>
           {players.length > 0
-            ? players.map((player, index) => (
-                <div key={index}>{player.name}</div>
-              ))
+            ? players
+                .slice(-5)
+                .reverse()
+                .map((player, index) => <div key={index}>{player.name}</div>)
             : "--Placeholder--"}
         </div>
       </div>
