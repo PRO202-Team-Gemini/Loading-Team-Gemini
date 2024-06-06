@@ -1,7 +1,6 @@
-import React from "react"; // Import React
 import { useNavigate } from "react-router-dom";
-import { LANDING_TEXT } from "../constants/landingpageText";
-import "../styles/landing.css";
+import { LANDING_TEXT } from "./constants/landingpageText";
+
 
 const { TITLE, SUBTITLE, PARAGRAPH1, BUTTON_TEXT } = LANDING_TEXT;
 
