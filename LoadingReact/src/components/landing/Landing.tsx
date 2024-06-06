@@ -1,7 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { LANDING_TEXT } from "./constants/landingpageText";
-
-const { TITLE, SUBTITLE, PARAGRAPH1, BUTTON_TEXT } = LANDING_TEXT;
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -11,24 +8,59 @@ const Landing = () => {
   };
 
   return (
-    <article className="col-12 col-md-8 col-lg-6 mx-auto my-5">
-      <div className="text-center">
-        <h1>{TITLE}</h1>
-        <h4>{SUBTITLE}</h4>
-      </div>
-      <div className="text-center card3 shadow rounded p-4 m-2 card-body">
-        <p>{PARAGRAPH1}</p>
-        <button
-          type="button"
-          className="btn btn-success mt-3"
-          onClick={handleClick}
-          aria-label={BUTTON_TEXT}
-        >
-          {BUTTON_TEXT}
-        </button>
-      </div>
-    </article>
+    <div className="d-flex flex-column align-items-center justify-content-center vh-100">
+      <article className="col-12 col-md-6 col-lg-4 text-center">
+        <section>
+          <div className="d-flex flex-column align-items-center">
+            <img src="/images/Loading.png" alt="loading" />
+            <p>Velkommen til forestilling!</p>
+          </div>
+          <section>
+            <div className="card2 shadow rounded p-3 card-body m-5">
+              <p>
+                Dette er en interaktiv forestilling hvor du bestemmer
+                handlingen. Velg navn og karakter på neste side, følg deretter
+                med på scenen for instrukser.
+              </p>
+              <div className="d-flex justify-content-center">
+                <button
+                  type="button"
+                  className="btn btn-success"
+                  onClick={handleClick}
+                >
+                  START
+                </button>
+              </div>
+            </div>
+          </section>
+        </section>
+      </article>
+    </div>
   );
 };
-
 export default Landing;
+
+//     <div className="d-flex align-items-center justify-content-center">
+//       <article className="col-12 col-md-6 col-lg-4">
+//         <div className="">
+//           <h1 className=""> LOADING </h1>
+//           <p className=""> Velkommen til forestilling!</p>
+//           <div className="card2 shadow rounded p-2 m-2 card-body">
+//             <p className="text-center">
+//               Dette er en interaktiv forestilling hvor du bestemmer handlingen.
+//               <br></br> Velg navn og karakter på neste side, følg deretter med
+//               på scenen for instrukser.
+//             </p>
+//             <div className=" text-center">
+//               <button
+//                 type="button"
+//                 className="btn btn-success"
+//                 onClick={handleClick}
+//               >
+//                 START
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+//       </article>
+//     </div>

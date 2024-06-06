@@ -6,8 +6,8 @@ const MainNavigation = () => {
     <nav>
       <div>
         <ul>
-          <Link to="/"> Landingsside </Link>
-          <Link to="turnPhone">Turn</Link>
+          <Link to="landingPage"> Landingsside </Link>
+          <Link to="turnPhonePage">Turn</Link>
 
           <Link to="signIn"> Sign in </Link>
 

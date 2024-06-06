@@ -1,8 +1,11 @@
-import React from "react";
 import Wait from "../components/attenion/WaitItem";
 
 const WaitPage = () => {
-  return <Wait />;
+  return (
+    <section>
+      <Wait />
+    </section>
+  );
 };
 
 export default WaitPage;

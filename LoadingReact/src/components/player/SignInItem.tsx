@@ -39,7 +39,6 @@ const SignIn: FC = () => {
       });
       setPlayer({ name: playerName, character: selectedCaracter });
 
-      // Navigate to the waiting room
       navigate("/waiting-room");
     } catch (error) {
       console.error("Error saving player: ", error);
@@ -71,7 +70,7 @@ const SignIn: FC = () => {
                 key={character}
                 onClick={() => {
                   setSelectedCaracter(character);
-                  console.log(`Selected character: ${character}`);
+                  //console.log(`Selected character: ${character}`);
                 }}
               >
                 <img

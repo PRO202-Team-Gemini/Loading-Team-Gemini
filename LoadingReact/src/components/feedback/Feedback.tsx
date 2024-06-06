@@ -1,9 +1,9 @@
-import React from "react";
 import "./feed.css";
 
 const Feedback = () => {
   return (
-    <div className="feedback">
+    <article className="feedback">
+      <div className="row">
       <p>Gi oss gjerne en smiley basert på din opplevelse!</p>
       <div className="smileys">
         <span role="img" aria-label="angry">
@@ -26,6 +26,7 @@ const Feedback = () => {
         <button className="btn btn-success">Submit</button>
       </div>
     </div>
+    </article>
   );
 };
 

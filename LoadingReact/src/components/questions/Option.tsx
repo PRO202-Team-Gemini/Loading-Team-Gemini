@@ -29,46 +29,48 @@ const Option = () => {
   };
 
   return (
-    <article>
+    <article className=" d-flex justify-content-center align-items-center vh-100">
       <section className="text-center rounded shadow">
         <h1>{question}</h1>
-      </section>
-      <div className="progress">
-        <div
-          className="progress-bar bg-success"
-          role="progressbar"
-          style={{ width: `${(timer / 60) * 100}%` }}
-        ></div>
-      </div>
-      <p className="text-center">{timer} sekunder igjen</p>
-      <section className="row">
-        {answers.slice(0, 2).map((answer, index) => (
-          <div className="col-6 mb-3" key={answer + "-" + index}>
-            <button
-              className="card3 answer-box text-center rounded w-100 p-3"
-              onClick={handleClick}
-            >
-              {answer}
-            </button>
-          </div>
-        ))}
-      </section>
-      <section className="row">
-        {answers.slice(2).map((answer, index) => (
-          <div className="col-6 mb-3" key={answer + "-" + (index + 2)}>
-            <button
-              className="card3 answer-box text-center rounded w-100 p-3"
-              onClick={handleClick}
-            >
-              {answer}
-            </button>
-          </div>
-        ))}
+        <div className="progress">
+          <div
+            className="progress-bar bg-success"
+            role="progressbar"
+            style={{ width: `${(timer / 60) * 100}%` }}
+          ></div>
+        </div>
+        <p className="text-center">{timer} sekunder igjen</p>
+        <section className="row">
+          {answers.slice(0, 2).map((answer, index) => (
+            <div className="col-6 mb-3" key={answer + "-" + index}>
+              <button
+                id="optionBtn"
+                className="card3 answer-box text-center rounded w-100 p-3"
+                onClick={handleClick}
+              >
+                {answer}
+              </button>
+            </div>
+          ))}
+        </section>
+        <section className="row">
+          {answers.slice(2).map((answer, index) => (
+            <div className="col-6 mb-3" key={answer + "-" + (index + 2)}>
+              <button
+                id="optionBtn"
+                className="card3 answer-box text-center rounded w-100 p-3"
+                onClick={handleClick}
+              >
+                {answer}
+              </button>
+            </div>
+          ))}
+        </section>
       </section>
     </article>
   );
 };
-
+export default Option;
 /*
  QuestionService.getAllQuestions()
      .then((questions) => {
@@ -85,5 +87,3 @@ const Option = () => {
      });
  }, []);
  */
-
-export default Option;

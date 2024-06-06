@@ -17,7 +17,6 @@ const LoadingPlayers = () => {
   useEffect(() => {
     const fetchPlayers = async () => {
       const players = await PlayerService.getAllPlayers();
-      console.log(players);
       setPlayers(players);
     };
     fetchPlayers();

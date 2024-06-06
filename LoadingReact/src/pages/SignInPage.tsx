@@ -1,11 +1,10 @@
-import React from "react";
 import SignIn from "../components/player/SignInItem.js";
 
 const SignInPage = () => {
   return (
-    <div>
+    <section className="">
       <SignIn />
-    </div>
+    </section>
   );
 };
 

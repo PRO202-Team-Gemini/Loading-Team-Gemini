@@ -9,22 +9,18 @@ const TurnPhone: React.FC = () => {
   };
 
   return (
-    <>
-      <section>
-        <div>
-          <img
-            src="/images/turnPhone.png"
-            alt="Turn Phone"
-            className="turn-phone-img"
-          />
-        </div>
-        <div className="text-center">
-          <button id="custom" className="btn mt-3" onClick={handleClick}>
-            Fortsett
-          </button>
-        </div>
-      </section>
-    </>
+    <section className="d-flex flex-column align-items-center justify-content-center vh-100">
+      <div className="col-12 col-md-6 col-lg-4 text-center">
+        <img
+          src="/images/turnPhone.png"
+          alt="Turn Phone"
+          className="turn-phone-img mx-auto d-block"
+        />
+        <button id="btnCustom" className="btn mt-5" onClick={handleClick}>
+          Fortsett
+        </button>
+      </div>
+    </section>
   );
 };
 

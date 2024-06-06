@@ -15,11 +15,14 @@ const Result: React.FC<{
 ) => {
   const navigate = useNavigate();
   const handleClick = (): void => {
-    navigate("/stats");
+    navigate("/feedback");
   };
   return (
-    <section>
-      <article onClick={handleClick}>
+    <article
+      onClick={handleClick}
+      className=" d-flex justify-content-center align-items-center vh-100"
+    >
+      <section className="text-center rounded shadow">
         {/* //TODO ersatt tekst med props */}
         <p>Hvilket våpen skal Askeladden plukke opp?</p>
         <div>
@@ -28,10 +31,27 @@ const Result: React.FC<{
             <img src="./images/resultater.png" />
           </div>
           <div id="graph"></div>
-        </div>
-      </article>
-    </section>
+        </div>{" "}
+      </section>
+    </article>
   );
 };
 
 export default Result;
+
+//  return (
+//     <section>
+//       <article onClick={handleClick}>
+//         {/* //TODO ersatt tekst med props */}
+//         <p>Hvilket våpen skal Askeladden plukke opp?</p>
+//         <div>
+//           {/* Placeholder for the graph */}
+//           <div className="img">
+//             <img src="./images/resultater.png" />
+//           </div>
+//           <div id="graph"></div>
+//         </div>
+//       </article>
+//     </section>
+//   );
+// };
