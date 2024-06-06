@@ -39,4 +39,26 @@ public class QuestionController : ControllerBase
                 return StatusCode(500);
             }    
 }
+
+[HttpGet("{id}")]
+public async Task<ActionResult<Question>> Get(int id)
+{
+    try
+    {
+        Question? question = await context.Questions.FindAsync(id);
+        if (question != null)
+        {
+            return Ok(question);
+        }
+        else
+        {
+            return NotFound();
+        }
+    }
+    catch
+    {
+        return StatusCode(500);
+    }
+}
+
 }

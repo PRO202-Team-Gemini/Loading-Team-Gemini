@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { IPlayer } from "../../interfaces/IPlayer";
+import PlayerService from "../../services/PlayerService";
 
 type Player = {
   name: string;
@@ -11,10 +13,11 @@ const LoadingPlayers = () => {
   /*const [isLoading, setIsLoading] = useState(true);*/
 
   useEffect(() => {
-    fetch("http://localhost:5157/api/players")
-      .then((response) => response.json())
-      .then((data: Player[]) => setPlayers(data));
-    /*setIsLoading(false); // Set loading to false when data is fetched*/
+    const fetchPlayers = async () => {
+      const players = await PlayerService.getAllPlayers();
+      setPlayers(players);
+    };
+    fetchPlayers();
   }, []);
 
   return (
@@ -40,5 +43,7 @@ const LoadingPlayers = () => {
     </article>
   );
 };
-
+/*.then((response) => response.json())
+      .then((data: Player[]) => setPlayers(data));
+    setIsLoading(false); // Set loading to false when data is fetched*/
 export default LoadingPlayers;
