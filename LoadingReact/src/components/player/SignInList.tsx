@@ -22,7 +22,7 @@ const PlayList = () => {
         key={i}
         id={player.id}
         name={player.name}
-        avatar={player.avatar}
+        character={player.character}
       />
     ));
     return playersJSX;

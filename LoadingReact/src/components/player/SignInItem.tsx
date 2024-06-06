@@ -2,19 +2,14 @@ import React, { useCallback, useContext, useState } from "react";
 import { FC } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { useNavigate } from "react-router-dom";
-import PlayService from "../../services/PlayerService";
-import badwords from "./badwords.json";
-import { IPlayer } from "../../interfaces/IPlayer";
 import { PlayerContext } from "../../context/PlayerContext";
+import PlayerService from "../../services/PlayerService";
+import badwords from "./badwords.json";
 
-//TODO Change the styling for "SelectedCharacter" to be more exiting
-//TODO Add a function to save the selected character to... somewhere
-
-const SignIn: FC<IPlayer> = () => {
-  const [playerName, setPlayerName] = useState("");
-  const {setPlayer} = useContext(PlayerContext);
-  const [selectedCharacter, setSelectedCharacter] = useState<string>("");
-  //const [feedback, setFeedback] = useState<string>("");
+const SignIn: FC = () => {
+  const [playerName, setPlayerName] = useState<string>("");
+  const { selectedCaracter, setPlayer, setSelectedCaracter } =
+    useContext(PlayerContext);
   const navigate = useNavigate();
 
   const characters: string[] = ["fox", "lion", "rabbit", "racoon", "owl"];
@@ -23,32 +18,33 @@ const SignIn: FC<IPlayer> = () => {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setPlayerName(e.currentTarget.value);
     },
-    [],
+    []
   );
 
-  const profanityFilter = (text: string) => {
+  const profanityFilter = (text: string): boolean => {
     const words = text.toLowerCase();
     return badwords.some((word) => words.includes(word));
   };
 
-  const savePlayer = async () => {
+  const savePlayer = useCallback(async () => {
     try {
       if (profanityFilter(playerName)) {
-        //setFeedback("Player name contains profanity.");
+        alert("Brukernavnet inneholder ugyldige ord, vennligst prøv igjen");
         return;
       }
 
-      await PlayService.postPlayer({ name: playerName, character: selectedCharacter});
-      setPlayer({ name: playerName});
-      setSelectedCharacter(selectedCharacter);
-      //setFeedback(`Player "${playerName}" created successfully`);
+      await PlayerService.postPlayer({
+        name: playerName,
+        character: selectedCaracter,
+      });
+      setPlayer({ name: playerName, character: selectedCaracter });
 
       // Navigate to the waiting room
       navigate("/waiting-room");
     } catch (error) {
-      //setFeedback(`Error creating player: ${error}`);
+      console.error("Error saving player: ", error);
     }
-  };
+  }, [playerName, selectedCaracter, setPlayer, navigate]);
 
   return (
     <section className="section-background">
@@ -74,14 +70,14 @@ const SignIn: FC<IPlayer> = () => {
               <Carousel.Item
                 key={character}
                 onClick={() => {
-                  setSelectedCharacter(character);
+                  setSelectedCaracter(character);
                   console.log(`Selected character: ${character}`);
                 }}
               >
                 <img
                   className={
-                    selectedCharacter === character
-                      ? "d-block w-100 selectedCaracter carousel-image"
+                    selectedCaracter === character
+                      ? "d-block w-100 selectedIMG carousel-image"
                       : "d-block w-100 carousel-image"
                   }
                   src={`/images/${character}.png`}
@@ -93,12 +89,12 @@ const SignIn: FC<IPlayer> = () => {
         </div>
       </article>
       <div className="text-center">
-        {/*{feedback && <p>{feedback}</p>} */}
-        <button className="btn btn-success mb-5" onClick={() => savePlayer()}>
+        <button className="btn btn-success mb-5" onClick={savePlayer}>
           Godta
         </button>
       </div>
     </section>
   );
 };
+
 export default SignIn;
