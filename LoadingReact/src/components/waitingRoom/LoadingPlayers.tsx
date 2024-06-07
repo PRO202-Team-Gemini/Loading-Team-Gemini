@@ -31,27 +31,31 @@ const LoadingPlayers = () => {
       style={{ height: "100vh" }}
     >
       <article
-        className="p-3 d-flex flex-column justify-content-center align-items-center"
+        className="p-3 d-flex flex-column justify-content-center align-items-center w-100"
         onClick={handleClick}
       >
-        <h1 className="text-center"> Venter på spillere </h1>
-        <div className="card2 shadow rounded p-1 m-1 card-body text-center">
-          {
-            /*players.length === 0 /isLoading &&*/ <div className="spinner"></div>
-          }
-          <p className="text-center player-count">
-            {" "}
-            <FontAwesomeIcon icon={faUser} />
-            <br />
-            <span>{players.length}</span>
-          </p>
-          <div className="text-center">
-            {players.length > 0
-              ? players
-                  .slice(-5)
-                  .reverse()
-                  .map((player, index) => <div key={index}>{player.name}</div>)
-              : "--Placeholder--"}
+        <div className="col-8">
+          <h1 className="text-center"> Venter på spillere </h1>
+          <div className="card2 shadow rounded p-1 m-1 card-body text-center">
+            {
+              /*players.length === 0 /isLoading &&*/ <div className="spinner"></div>
+            }
+            <p className="text-center player-count">
+              {" "}
+              <FontAwesomeIcon icon={faUser} />
+              <br />
+              <span>{players.length}</span>
+            </p>
+            <div className="text-center">
+              {players.length > 0
+                ? players
+                    .slice(-5)
+                    .reverse()
+                    .map((player, index) => (
+                      <div key={index}>{player.name}</div>
+                    ))
+                : "--Placeholder--"}
+            </div>
           </div>
         </div>
       </article>
