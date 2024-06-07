@@ -3,22 +3,27 @@
 ## TODO FRONTEND
 ###  OBS!! --> DOKUMENTASJON av frontend <--
 
-[ ] Opprette service-fil med oppkobling og spørringer til APIet
+[] Dokumter react, bootstrap, Api++ {}
 
-- PlayerService [x] - AnswerService [ ] - Question Service [ ] {Karima/Rebecca}
+[x] Opprette service-fil med oppkobling og spørringer til APIet
+
+- PlayerService [x] - AnswerService [ ] - Question Service [x] {Karima/Rebecca}
 
 [x] Opprette kobling for Player / {Karima/Rebecca}
 
-[ ] Opprette kobling for Questions
+[x] Opprette kobling for Questions {Karima}
 
-[ ] Opprette kobling for Answers
+[ ] Opprette kobling for Answers {Rebecca}
 
-[ ] Mobil tilpasse alle sider {Solveig}
+[x] Mobil tilpasse alle sider {Karima} ~~{Solveig}~~
 
-[ ] Fin stusse + finne "logo"(?) til LandingPage {Solveig}
+[x] Fin stusse + finne "logo" til LandingPage {Karima} ~~{Solveig}~~
 
-[ ] Fin stusse TurnPhonePage {Solveig}
+[x] Fin stusse TurnPhonePage {Karima}~~{Solveig}~~
 
 [ ] Funksjonalitet til FeedBack
 
 ## TODO BACKEND
+[x] Sette opp Controller for question {Rebecca}
+[] Sette opp Controller for answer
+[] Funksjonalitet til FeedBack
