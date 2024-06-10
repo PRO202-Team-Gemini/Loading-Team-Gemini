@@ -52,6 +52,7 @@ p {
 /* Card2 is used in Wait + Landing */
 .card2 {
   background-color: #3f4e4f;
+  border: 2px solid #dcd7ca;
 }
 /* Option */
 .card3 {
