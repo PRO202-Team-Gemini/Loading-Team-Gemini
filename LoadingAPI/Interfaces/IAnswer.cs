@@ -4,7 +4,7 @@ namespace LoadingAPI.Interfaces
     {
         int Id { get; set; }
         int QuestionId { get; set; }
-        int AnswerText { get; set; }
+        string AnswerText { get; set; }
         bool IsChosen { get; set; }
         int NextQuestion { get; set; }
     }
