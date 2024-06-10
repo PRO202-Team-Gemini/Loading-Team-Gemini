@@ -4,7 +4,7 @@ namespace LoadingAPI.Models
 {
     public class AnswerModel : IAnswer
     {
-        public int Id { get; set; }
+        public int? Id { get; set; } = null;
         public int QuestionId { get; set; } //FK
         public int AnswerText { get; set; }
         public bool IsChosen { get; set; }

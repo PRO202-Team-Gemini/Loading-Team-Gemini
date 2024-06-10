@@ -1,8 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using LoadingAPI.Contexts;
-using Microsoft.OpenApi.Models;
+using LoadingAPI.Models;
+using LoadingAPI.Entities;
+using LoadingAPI.Admin;
 
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<LoadingContext>
@@ -24,7 +26,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 app.UseStaticFiles();
 app.UseCors("AllowAll");
 
@@ -40,5 +42,59 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// ADDED to read from .xlsx and add to database
+using (IServiceScope? serviceScope = app.Services.CreateScope())
+{
+    LoadingContext context = serviceScope.ServiceProvider.GetRequiredService<LoadingContext>();
+    CsvReaderService csvReaderService = new();
+    ConvertFromXlsToCsv converter = new();
+    string filePath = "";
+
+    //QUESTIONS
+    converter.Convert("questions.xlsx", "questions.csv");
+    filePath = Path.Combine(Environment.CurrentDirectory, @"Admin\Datafiles", "questions.csv");
+    List<QuestionModel> questionRecords = csvReaderService.ReadFromCsv<QuestionModel>(filePath);
+    List<Question> questions = questionRecords.Select(r => new Question
+    {
+        QuestionText = r.QuestionText,
+        AnswerAmount = r.AnswerAmount
+    }).ToList();
+    context.Questions.AddRange(questions);
+    File.Delete(filePath);
+
+    //ANSWERS
+    converter.Convert("answers.xlsx", "answers.csv");
+    filePath = Path.Combine(Environment.CurrentDirectory, @"Admin\Datafiles", "answers.csv");
+    List<AnswerModel> answerRecords = csvReaderService.ReadFromCsv<AnswerModel>(filePath);
+    List<Answer> answers = answerRecords.Select(a => new Answer
+    {
+        QuestionId = a.QuestionId,
+        AnswerText = a.AnswerText,
+        IsChosen = a.IsChosen,
+        StatKeyId = a.AffectedStatId,
+        NextQuestion = a.NextQuestion
+    }).ToList();
+    context.Answers.AddRange(answers);
+    File.Delete(filePath);
+
+    //CHARACTER STATS
+    converter.Convert("characterStat.xlsx", "characterStat.csv");
+    filePath = Path.Combine(Environment.CurrentDirectory, @"Admin\Datafiles", "characterStat.csv");
+    List<CharacterStatModel> characterStatRecords = csvReaderService.ReadFromCsv<CharacterStatModel>(filePath);
+    List<CharacterStat> characterStats = characterStatRecords.Select(c => new CharacterStat
+    {
+        Name = c.Name,
+        Level = c.Level,
+        Attack = c.Attack,
+        Strength = c.Strength,
+        Health = c.Health,
+        Expirience = c.Expirience
+    }).ToList();
+    context.CharacterStat.AddRange(characterStats);
+    File.Delete(filePath);
+
+    context.SaveChanges();
+}
 
 app.Run();
