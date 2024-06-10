@@ -55,13 +55,20 @@ using (IServiceScope? serviceScope = app.Services.CreateScope())
     converter.Convert("questions.xlsx", "questions.csv");
     filePath = Path.Combine(Environment.CurrentDirectory, @"Admin\Datafiles", "questions.csv");
     List<QuestionModel> questionRecords = csvReaderService.ReadFromCsv<QuestionModel>(filePath);
-    List<Question> questions = questionRecords.Select(r => new Question
+    List<Question> questions = questionRecords.Select(q => new Question
     {
-        QuestionText = r.QuestionText,
-        AnswerAmount = r.AnswerAmount
+        QuestionText = q.QuestionText,
+        AnswerAmount = q.AnswerAmount
     }).ToList();
+
+    List<Question> previousQuestions = await context.Questions.ToListAsync();
+
+    context.Questions.RemoveRange(previousQuestions);
     context.Questions.AddRange(questions);
+
     File.Delete(filePath);
+    
+        context.SaveChanges();
 
     //ANSWERS
     converter.Convert("answers.xlsx", "answers.csv");
@@ -75,9 +82,15 @@ using (IServiceScope? serviceScope = app.Services.CreateScope())
         StatKeyId = a.AffectedStatId,
         NextQuestion = a.NextQuestion
     }).ToList();
+
+    List<Answer> previousAnswers = await context.Answers.ToListAsync();
+
+    context.Answers.RemoveRange(previousAnswers);
     context.Answers.AddRange(answers);
+
     File.Delete(filePath);
 
+    /*
     //CHARACTER STATS
     converter.Convert("characterStat.xlsx", "characterStat.csv");
     filePath = Path.Combine(Environment.CurrentDirectory, @"Admin\Datafiles", "characterStat.csv");
@@ -91,8 +104,14 @@ using (IServiceScope? serviceScope = app.Services.CreateScope())
         Health = c.Health,
         Expirience = c.Expirience
     }).ToList();
+
+    List<CharacterStat> previousCharacterStats = await context.CharacterStat.ToListAsync();
+
+    context.CharacterStat.RemoveRange(previousCharacterStats);
     context.CharacterStat.AddRange(characterStats);
+
     File.Delete(filePath);
+    */
 
     context.SaveChanges();
 }

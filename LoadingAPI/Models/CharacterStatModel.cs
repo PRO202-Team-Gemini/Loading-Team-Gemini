@@ -8,7 +8,6 @@ namespace LoadingAPI.Models
 		public int Attack { get; set; }
 		public int Strength { get; set; }
 		public int Health {	get; set; }
-		//Skrivefeil, bytte til Experience
 		public int Expirience { get; set; }
 	}
 }
