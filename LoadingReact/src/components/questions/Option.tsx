@@ -23,8 +23,11 @@ const Option = () => {
         setQuestion(randomQuestion);
 
         const answers = await AnswerService.getAnswersByQuestionId(
-          randomQuestion.id
+          //randomQuestion.id
+          1
         );
+
+        alert(JSON.stringify(answers));
         setAnswers(answers);
 
         setLoading(false);
