@@ -30,7 +30,7 @@ const Option = () => {
 
   return (
     <article className=" d-flex justify-content-center align-items-center vh-100">
-      <section className="text-center rounded shadow">
+      <section className="text-center rounded  p-4 card2">
         <h1>{question}</h1>
         <div className="progress">
           <div
