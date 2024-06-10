@@ -24,6 +24,7 @@ namespace LoadingAPI.Controllers
             try
             {
                 List<Answer> answers = await context.Answers.ToListAsync();
+                    
                 if (answers != null)
                 {
                     return Ok(answers);
@@ -48,6 +49,27 @@ namespace LoadingAPI.Controllers
                 if (answer != null)
                 {
                     return Ok(answer);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
+        }
+
+        [HttpGet("question/{questionId}")]
+        public async Task<ActionResult<List<Answer>>> GetByQuestionId(int questionId)
+        {
+            try
+            {
+                List<Answer> answers = await context.Answers.Where(a => a.QuestionId == questionId).ToListAsync();
+                if (answers != null)
+                {
+                    return Ok(answers);
                 }
                 else
                 {

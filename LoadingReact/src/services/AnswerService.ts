@@ -23,10 +23,21 @@ const AnswerService = (() => {
       console.log(e);
     }
   };
-
+  const getAnswersByQuestionId = async (questionId: number) => {
+    try {
+      const result = await axios.get(
+        `${answerController}/question/${questionId}`
+      );
+      console.log(result);
+      return result.data;
+    } catch (e) {
+      console.log(e);
+    }
+  };
   return {
     getAllAnswers,
     getAnswerById,
+    getAnswersByQuestionId,
   };
 })();
 export default AnswerService;
