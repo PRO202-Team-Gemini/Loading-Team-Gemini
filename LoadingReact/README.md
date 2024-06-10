@@ -1,19 +1,38 @@
-# **LOADING**
----
+# Project-Loading
 
-First you'll need to install npm.
-Open the integrated terminal in "LoadingReact" folder.
-Run:
-> npm install
 
-Open integrated terminal for "LoadingAPI"
-Run:
-> dotnet watch
+## Code structure 
 
-this will open a swagger site for the api, showing the endpoints.
+- English
+- Write concise but informative commits (can be in norwegian)
+- Don't push anything to the main branch without PR being assessed by other team members
+- Use GitHub Pages to deploy project
+- Be consistent with branches and naming conventions.
+- Prettier for formatting
 
-in LoadingReact terminal you can now run
-> npm run dev
+## **ToDo**
+- Write .yaml file
 
-And the project is now running localy on your device.
 
+## Code Standard
+
+### Frontend
+- Global CSS variables
+- React med TypeScript
+- React
+- Bootstrap
+
+### Backend
+- Node.js
+
+### Database
+- MySQL
+
+
+## Backend
+
+### ToDo
+- Add more error/exception handling.
+
+### Questions
+- Should the Id be int or Guid?
