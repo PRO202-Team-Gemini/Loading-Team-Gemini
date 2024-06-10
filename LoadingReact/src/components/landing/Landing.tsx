@@ -12,7 +12,7 @@ const Landing = () => {
       <article className="col-12 col-md-6 col-lg-4 text-center">
         <section>
           <div className="d-flex flex-column align-items-center">
-            <img src="/images/Loading.png" alt="loading" />
+            <img src="/images/LoadingLogo.png" alt="loading" />
             <p>Velkommen til forestilling!</p>
           </div>
           <section>
