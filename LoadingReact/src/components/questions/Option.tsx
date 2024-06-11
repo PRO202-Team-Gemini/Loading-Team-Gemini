@@ -59,13 +59,13 @@ const Option = () => {
   }, [question]);
 
 
-  const handleAnswerClick = (answer: IAnswer): void => {
-    /*if (localStorage.getItem("questionIndex") === "0") {
-      console.log("YAY");
-    } else {
-      console.log("NAY");
-    }*/
+  useEffect(() => {
+    if (timer === 0) {
+      navigate("/result");
+    }
+  }, [timer]);
 
+  const handleAnswerClick = (answer: IAnswer): void => {
     navigate("/result", {
       state: {
         question: question?.questionText,
@@ -73,12 +73,6 @@ const Option = () => {
         selectedAnswer: answer,
       },
     });
-
-    useEffect(() => {
-      if (timer === 0) {
-        navigate("/result");
-      }
-    }, [timer]);
   };
 
   return (
