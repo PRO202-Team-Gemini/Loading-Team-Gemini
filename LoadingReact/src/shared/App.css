@@ -7,19 +7,16 @@
     monospace;
   color: #ffffff;
 }
+body {
+  background-color: #2c3933;
+}
+
 .h1L {
   font-family: Silkscreen, monospace;
   font-size: 60px;
   padding-top: 40px;
 }
-body {
-  background-color: #2c3933;
-}
-#btnCustom {
-  background-color: #ffffff;
-  color: #3f4e4f;
-  font-family: "azeret mono", monospace;
-}
+
 p {
   font-family: "azeret mono", monospace;
   color: #ffffff;
@@ -27,7 +24,7 @@ p {
 }
 
 /* Used in Wait */
-.app-h1 {
+/* .app-h1 {
   font-family: "azeret mono", monospace;
   font-size: 5em;
   color: #cb9319;
@@ -36,7 +33,7 @@ p {
   font-family: "azeret mono", monospace;
   color: #ffffff;
   font-size: 2em;
-}
+} */
 
 /* Turn phone */
 .turn-phone-img {
@@ -65,13 +62,10 @@ p {
   background-color: #3f4e4f;
   position: relative;
 }
-#optionBtn {
-  background-color: #ffffff;
-}
 
-#optionBtn:hover {
-  background-color: #3f4e4fa8;
-}
+/* #optionBtn {
+  background-color: #ffffff;
+} */
 
 .answer-box {
   background-color: #ffffff;
@@ -148,4 +142,25 @@ p {
 }
 .input-field:focus {
   background-color: #3f4e4f !important;
+}
+
+/* Feedback page */
+.smileys {
+  display: flex;
+  justify-content: space-between;
+  font-size: 5em;
+}
+
+.smileys :hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.feedback p {
+  font-size: 1em;
+  margin-top: 10%;
+  text-align: center;
 }

@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { IPlayer } from "../../interfaces/IPlayer";
 import PlayerService from "../../services/PlayerService";
 import { useNavigate } from "react-router-dom";
 
@@ -12,7 +11,6 @@ type Player = {
 const LoadingPlayers = () => {
   const [players, setPlayers] = useState<Player[]>([]);
   const navigate = useNavigate();
-  /*const [isLoading, setIsLoading] = useState(true);*/
 
   useEffect(() => {
     const fetchPlayers = async () => {
@@ -36,10 +34,8 @@ const LoadingPlayers = () => {
       >
         <div className="col-8">
           <h1 className="text-center"> Venter på spillere </h1>
-          <div className="card2 shadow rounded p-1 m-1 card-body text-center">
-            {
-              /*players.length === 0 /isLoading &&*/ <div className="spinner"></div>
-            }
+          <div className="card2 rounded p-1 m-1 card-body text-center">
+            {<div className="spinner"></div>}
             <p className="text-center player-count">
               {" "}
               <FontAwesomeIcon icon={faUser} />
@@ -62,7 +58,5 @@ const LoadingPlayers = () => {
     </section>
   );
 };
-/*.then((response) => response.json())
-      .then((data: Player[]) => setPlayers(data));
-    setIsLoading(false); // Set loading to false when data is fetched*/
+
 export default LoadingPlayers;

@@ -1,6 +1,5 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import "./result.css";
 import { IAnswer } from "../../interfaces/IAnswer";
 
 const Result: React.FC = () => {
@@ -24,7 +23,6 @@ const Result: React.FC = () => {
   const totalAnswers = 1;
 
   const handleClick = (): void => {
-    //ADD LOGIC HERE FOR NAVIGATION
     navigate("/feedback");
   };
 
@@ -36,7 +34,7 @@ const Result: React.FC = () => {
   return (
     <article
       onClick={handleClick}
-      className=" d-flex justify-content-center align-items-center vh-100"
+      className="d-flex justify-content-center align-items-center vh-100"
     >
       <section className="text-center rounded shadow p-4">
         <h1>{question}</h1>

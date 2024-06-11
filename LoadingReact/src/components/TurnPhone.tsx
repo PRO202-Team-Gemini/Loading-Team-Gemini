@@ -16,7 +16,7 @@ const TurnPhone: React.FC = () => {
           alt="Turn Phone"
           className="turn-phone-img mx-auto d-block"
         />
-        <button id="btnCustom" className="btn mt-5" onClick={handleClick}>
+        <button className="btn btn-success mt-5" onClick={handleClick}>
           Fortsett
         </button>
       </div>

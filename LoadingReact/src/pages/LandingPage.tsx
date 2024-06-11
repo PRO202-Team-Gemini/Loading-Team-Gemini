@@ -2,7 +2,7 @@ import Landing from "../components/landing/Landing";
 
 const LandingPage = () => {
   return (
-    <section className="">
+    <section>
       <Landing />
     </section>
   );
