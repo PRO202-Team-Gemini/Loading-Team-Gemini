@@ -2,6 +2,20 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { IAnswer } from "../../interfaces/IAnswer";
 
+function NextQuestionAvailable(): boolean {
+  const questionCount = parseInt(localStorage.getItem("questionCount") as string);
+  let currentIndex = parseInt(localStorage.getItem("questionIndex") as string);
+
+  if (questionCount === currentIndex || questionCount === 0) {
+    return false;
+  } else {
+    currentIndex++;
+    localStorage.setItem("questionIndex", currentIndex.toString());
+
+    return true;
+  }
+}
+
 const Result: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -23,7 +37,11 @@ const Result: React.FC = () => {
   const totalAnswers = 1;
 
   const handleClick = (): void => {
-    navigate("/feedback");
+    if (NextQuestionAvailable()) {
+      navigate("/wait");
+    } else {
+      navigate("/feedback");
+    }
   };
 
   const formatPrecentage = (count: number, total: number) => {
