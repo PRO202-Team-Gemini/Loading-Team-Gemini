@@ -10,8 +10,9 @@ const Option = () => {
     questionText: string;
   } | null>(null);
   const [answers, setAnswers] = useState<IAnswer[]>([]);
+  //const selectedAnswers, setSelectedAnswers = useState<IAnswer[]>([]);
   const [timer, setTimer] = useState(60);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,14 +23,10 @@ const Option = () => {
           questions[Math.floor(Math.random() * questions.length)];
         setQuestion(randomQuestion);
 
-        const answers = await AnswerService.getAnswersByQuestionId(
-          //randomQuestion.id
-          1
+        const fetchedAnswers = await AnswerService.getAnswersByQuestionId(
+          randomQuestion.id
         );
-
-        alert(JSON.stringify(answers));
-        setAnswers(answers);
-
+        setAnswers(fetchedAnswers);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching question", error);
@@ -49,8 +46,14 @@ const Option = () => {
     }
   }, [question]);
 
-  const handleClick = (): void => {
-    navigate("/result");
+  const handleAnswerClick = (answer: IAnswer): void => {
+    navigate("/result", {
+      state: {
+        question: question?.questionText,
+        answers: answers,
+        selectedAnswer: answer,
+      },
+    });
   };
 
   return (
@@ -66,12 +69,12 @@ const Option = () => {
         </div>
         <p className="text-center">{timer} sekunder igjen</p>
         <section className="row">
-          {answers.slice(0, 2).map((answer, index) => (
+          {answers.slice(0, 2).map((answer) => (
             <div className="col-6 mb-3" key={answer.id}>
               <button
                 id="optionBtn"
                 className="card3 answer-box text-center rounded w-100 p-3"
-                onClick={handleClick}
+                onClick={() => handleAnswerClick(answer)}
               >
                 {answer.answerText}
               </button>
@@ -84,7 +87,7 @@ const Option = () => {
               <button
                 id="optionBtn"
                 className="card3 answer-box text-center rounded w-100 p-3"
-                onClick={handleClick}
+                onClick={() => handleAnswerClick(answer)}
               >
                 {answer.answerText}
               </button>
@@ -95,6 +98,7 @@ const Option = () => {
     </article>
   );
 };
+
 export default Option;
 /*
  QuestionService.getAllQuestions()
