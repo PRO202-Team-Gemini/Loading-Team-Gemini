@@ -49,6 +49,12 @@ const Option = () => {
     }
   }, [question]);
 
+  useEffect(() => {
+    if (timer === 0) {
+      navigate("/result");
+    }
+  }, [timer]);
+
   const handleClick = (): void => {
     navigate("/result");
   };
