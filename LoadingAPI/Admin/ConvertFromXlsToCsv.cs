@@ -8,8 +8,8 @@ namespace LoadingAPI.Admin
     {
         public void Convert(string xlsFileName, string csvFileName)
         {
-            string xlsLoadPath = Path.Combine(Environment.CurrentDirectory, @"Admin\Datafiles", xlsFileName);
-            string csvSavePath = Path.Combine(Environment.CurrentDirectory, @"Admin\Datafiles", csvFileName);
+            string xlsLoadPath = Path.Combine(Environment.CurrentDirectory, @"Admin/Datafiles", xlsFileName);
+            string csvSavePath = Path.Combine(Environment.CurrentDirectory, @"Admin/Datafiles", csvFileName);
 
             IWorkbook workbook;
             using (FileStream file = new FileStream(xlsLoadPath, FileMode.Open, FileAccess.Read))
