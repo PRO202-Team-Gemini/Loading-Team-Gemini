@@ -1,18 +1,34 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import PlayService from "../../services/PlayerService.ts";
+import QuestionService from "../../services/QuestionService.ts";
 
 const Option = () => {
-  const [question, setQuestion] = useState("");
+  const [question, setQuestion] = useState();
   const [answers, setAnswers] = useState(["", "", "", ""]);
   const [timer, setTimer] = useState(60);
   const navigate = useNavigate();
 
+  const getQuestion = async () => {
+    const questionFromService = await QuestionService.getQuestionById(1);
+    console.log("Question from service ", questionFromService);
+    setQuestion(questionFromService);
+  };
+
   useEffect(() => {
+    //ADD LOGIC FOR FETCHING QUESTION
+    getQuestion();
+
+
+
     // simulerer en fetch fra  backend, endre når backend er på plass
+    /*
     setTimeout(() => {
-      setQuestion("Hvilket våpen skal Askeladden velge?");
+      //setQuestion("Hvilket våpen skal Askeladden velge?");
       setAnswers(["Sverd 🗡️", "Øks 🪓", "Spyd ⛏️", "Kjepp 🏒"]);
     }, 1000);
+
+     */
   }, []);
 
   useEffect(() => {
@@ -24,6 +40,12 @@ const Option = () => {
     }
   }, [question]);
 
+  useEffect(() => {
+    if (timer === 0) {
+      navigate("/result");
+    }
+  }, [timer]);
+
   const handleClick = (): void => {
     navigate("/result");
   };
@@ -31,7 +53,7 @@ const Option = () => {
   return (
     <article className=" d-flex justify-content-center align-items-center vh-100">
       <section className="text-center rounded shadow">
-        <h1>{question}</h1>
+        <h1>{question?.questionText}</h1>
         <div className="progress">
           <div
             className="progress-bar bg-success"

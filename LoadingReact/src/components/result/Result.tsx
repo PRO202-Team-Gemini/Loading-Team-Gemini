@@ -15,6 +15,11 @@ const Result: React.FC<{
 ) => {
   const navigate = useNavigate();
   const handleClick = (): void => {
+    //ADD LOGIC HERE FOR NAVIGATION
+
+
+
+
     navigate("/feedback");
   };
   return (

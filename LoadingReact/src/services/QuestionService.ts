@@ -20,6 +20,7 @@ const QuestionService = (() => {
       const result = await axios.get(`${questionController}/${id}`);
       console.log(result);
       return result.data;
+
     } catch (e) {
       console.log(e);
     }
