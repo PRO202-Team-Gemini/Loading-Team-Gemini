@@ -60,7 +60,7 @@ using (IServiceScope? serviceScope = app.Services.CreateScope())
 
     //QUESTIONS
     converter.Convert("questions.xlsx", "questions.csv");
-    filePath = Path.Combine(Environment.CurrentDirectory, @"Admin\Datafiles", "questions.csv");
+    filePath = Path.Combine(Environment.CurrentDirectory, @"Admin/Datafiles", "questions.csv");
     List<QuestionModel> questionRecords = csvReaderService.ReadFromCsv<QuestionModel>(filePath);
     List<Question> questions = questionRecords.Select(q => new Question
     {
@@ -74,7 +74,7 @@ using (IServiceScope? serviceScope = app.Services.CreateScope())
 
     //ANSWERS
     converter.Convert("answers.xlsx", "answers.csv");
-    filePath = Path.Combine(Environment.CurrentDirectory, @"Admin\Datafiles", "answers.csv");
+    filePath = Path.Combine(Environment.CurrentDirectory, @"Admin/Datafiles", "answers.csv");
     List<AnswerModel> answerRecords = csvReaderService.ReadFromCsv<AnswerModel>(filePath);
 
     List<Answer> answers = answerRecords.Where(a => questions.Any(q => q.Id == a.QuestionId)).Select(a => new Answer
@@ -92,7 +92,7 @@ using (IServiceScope? serviceScope = app.Services.CreateScope())
 
     //CHARACTER STATS
     converter.Convert("characterStat.xlsx", "characterStat.csv");
-    filePath = Path.Combine(Environment.CurrentDirectory, @"Admin\Datafiles", "characterStat.csv");
+    filePath = Path.Combine(Environment.CurrentDirectory, @"Admin/Datafiles", "characterStat.csv");
     List<CharacterStatModel> characterStatRecords = csvReaderService.ReadFromCsv<CharacterStatModel>(filePath);
 
     List<CharacterStat> characterStats = characterStatRecords.Select(c => new CharacterStat
