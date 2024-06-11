@@ -12,7 +12,7 @@ const Landing = () => {
       <article className="col-12 col-md-6 col-lg-4 text-center">
         <section>
           <div className="d-flex flex-column align-items-center">
-            <img src="/images/LoadingLogo.png" alt="loading" />
+            <h1 className="h1L">LOADING</h1>
             <p>Velkommen til forestilling!</p>
           </div>
           <section>
@@ -39,28 +39,3 @@ const Landing = () => {
   );
 };
 export default Landing;
-
-//     <div className="d-flex align-items-center justify-content-center">
-//       <article className="col-12 col-md-6 col-lg-4">
-//         <div className="">
-//           <h1 className=""> LOADING </h1>
-//           <p className=""> Velkommen til forestilling!</p>
-//           <div className="card2 shadow rounded p-2 m-2 card-body">
-//             <p className="text-center">
-//               Dette er en interaktiv forestilling hvor du bestemmer handlingen.
-//               <br></br> Velg navn og karakter på neste side, følg deretter med
-//               på scenen for instrukser.
-//             </p>
-//             <div className=" text-center">
-//               <button
-//                 type="button"
-//                 className="btn btn-success"
-//                 onClick={handleClick}
-//               >
-//                 START
-//               </button>
-//             </div>
-//           </div>
-//         </div>
-//       </article>
-//     </div>

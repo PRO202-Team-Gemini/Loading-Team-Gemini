@@ -12,14 +12,8 @@ const Option = () => {
   const [answers, setAnswers] = useState<IAnswer[]>([]);
   //const selectedAnswers, setSelectedAnswers = useState<IAnswer[]>([]);
   const [timer, setTimer] = useState(60);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
-
-  const getQuestion = async () => {
-    const questionFromService = await QuestionService.getQuestionById(1);
-    console.log("Question from service ", questionFromService);
-    setQuestion(questionFromService);
-  };
 
   useEffect(() => {
     const fetchQuestionAndAnswers = async () => {
@@ -66,10 +60,6 @@ const Option = () => {
         navigate("/result");
       }
     }, [timer]);
-
-    const handleClick = (): void => {
-      navigate("/result");
-    };
   };
 
   return (
@@ -98,7 +88,7 @@ const Option = () => {
           ))}
         </section>
         <section className="row">
-          {answers.slice(2).map((answer, index) => (
+          {answers.slice(2).map((answer) => (
             <div className="col-6 mb-3" key={answer.id}>
               <button
                 id="optionBtn"
@@ -116,44 +106,3 @@ const Option = () => {
 };
 
 export default Option;
-
-/*
- QuestionService.getAllQuestions()
-     .then((questions) => {
-       const randomQuestion =
-         questions[Math.floor(Math.random() * questions.length)];
-       setQuestion(randomQuestion.questionText);
-       setAnswers(Array(randomQuestion.answerAmount).fill(null));
-       setLoading(false);
-     })
-     .catch((error) => {
-       console.error("Error fetching question", error);
-       setAnswers([]); // set to empty array if API request fails
-       setLoading(false);
-     });
- }, []);
-
-
- QuestionService.getAllQuestions()
-      .then((questions) => {
-        const randomQuestion =
-          questions[Math.floor(Math.random() * questions.length)];
-        setQuestion(randomQuestion.questionText);
-
-        // Fetch answers for the selected question
-        AnswerService.getAnswersByQuestionId(randomQuestion.id)
-          .then((answers) => {
-            setAnswers(answers);
-          })
-          .catch((error) => {
-            console.error("Error fetching answers", error);
-            setAnswers([]); // set to empty array if API request fails
-          });
-
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching question", error);
-        setLoading(false);
-      });
- */

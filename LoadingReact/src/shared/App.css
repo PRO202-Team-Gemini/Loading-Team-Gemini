@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap");
 #root {
   background-color: #2c3933;
   height: 100vh;
@@ -5,6 +6,11 @@
     azert mono,
     monospace;
   color: #ffffff;
+}
+.h1L {
+  font-family: Silkscreen, monospace;
+  font-size: 60px;
+  padding-top: 40px;
 }
 body {
   background-color: #2c3933;

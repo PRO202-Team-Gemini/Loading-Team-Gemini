@@ -2,13 +2,6 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./result.css";
 import { IAnswer } from "../../interfaces/IAnswer";
-import { count } from "console";
-
-/*interface ResultProps {
-  question: string;
-  answers: { label: string; count: number }[];
-  total: number;
-}*/
 
 const Result: React.FC = () => {
   const navigate = useNavigate();
@@ -32,10 +25,6 @@ const Result: React.FC = () => {
 
   const handleClick = (): void => {
     //ADD LOGIC HERE FOR NAVIGATION
-
-
-
-
     navigate("/feedback");
   };
 
