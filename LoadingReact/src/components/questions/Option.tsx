@@ -15,6 +15,12 @@ const Option = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
 
+  const getQuestion = async () => {
+    const questionFromService = await QuestionService.getQuestionById(1);
+    console.log("Question from service ", questionFromService);
+    setQuestion(questionFromService);
+  };
+
   useEffect(() => {
     const fetchQuestionAndAnswers = async () => {
       try {

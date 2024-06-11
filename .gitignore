@@ -25,6 +25,9 @@ obj
 !.vscode/extensions.json
 .idea
 .DS_Store
+
+.vs/
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
