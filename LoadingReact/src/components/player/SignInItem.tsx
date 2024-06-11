@@ -70,7 +70,6 @@ const SignIn: FC = () => {
                 key={character}
                 onClick={() => {
                   setSelectedCaracter(character);
-                  //console.log(`Selected character: ${character}`);
                 }}
               >
                 <img

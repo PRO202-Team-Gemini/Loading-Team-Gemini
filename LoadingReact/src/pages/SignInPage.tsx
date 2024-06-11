@@ -2,7 +2,7 @@ import SignIn from "../components/player/SignInItem.js";
 
 const SignInPage = () => {
   return (
-    <section className="">
+    <section>
       <SignIn />
     </section>
   );

@@ -1,11 +1,7 @@
 import Feedback from "../components/feedback/Feedback";
 
 const FeedbackPage = () => {
-  return (
-    <section>
-  <Feedback />
-  </section>
-  );
+  return <Feedback />;
 };
 
 export default FeedbackPage;

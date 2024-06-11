@@ -16,7 +16,7 @@ const Landing = () => {
             <p>Velkommen til forestilling!</p>
           </div>
           <section>
-            <div className="card2 shadow rounded p-3 card-body m-5">
+            <div className="card2 rounded p-3 card-body m-5">
               <p>
                 Dette er en interaktiv forestilling hvor du bestemmer
                 handlingen. Velg navn og karakter på neste side, følg deretter

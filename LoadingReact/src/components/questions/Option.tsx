@@ -10,7 +10,6 @@ const Option = () => {
     questionText: string;
   } | null>(null);
   const [answers, setAnswers] = useState<IAnswer[]>([]);
-  //const selectedAnswers, setSelectedAnswers = useState<IAnswer[]>([]);
   const [timer, setTimer] = useState(60);
   const [, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
