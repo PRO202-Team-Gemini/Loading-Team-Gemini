@@ -1,0 +1,6 @@
+Excel sheets have been set up to easily feed data to the database. These file can be found at LoadingV2/LoadingAPI/Admin/Datafiles.
+
+When running the backend (dotnet watch), the data currently in the three databases (answers, characterStat, questions) will be cleared out and replaced with data provided in the excel sheets.
+Oops! The excel files need to be closed before running the server, and cannot be changed during runtime without running dotnet watch again.
+
+Each row represents an entry in the database, where the first row represents the table names and must never be changed (!!!).

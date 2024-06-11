@@ -18,12 +18,25 @@ const Option = () => {
     const fetchQuestionAndAnswers = async () => {
       try {
         const questions = await QuestionService.getAllQuestions();
+
+        if (localStorage.getItem("questionCount") === null) {
+            localStorage.setItem("questionCount", (questions.length - 1).toString());
+            localStorage.setItem("questionIndex", "0");
+        }
+
+        const currentQuestion = questions[parseInt(localStorage.getItem("questionIndex") as string)];
+
+        setQuestion(currentQuestion);
+
+        /*
         const randomQuestion =
           questions[Math.floor(Math.random() * questions.length)];
         setQuestion(randomQuestion);
 
+         */
+
         const fetchedAnswers = await AnswerService.getAnswersByQuestionId(
-          randomQuestion.id
+          currentQuestion.id
         );
         setAnswers(fetchedAnswers);
         setLoading(false);
@@ -45,7 +58,14 @@ const Option = () => {
     }
   }, [question]);
 
+
   const handleAnswerClick = (answer: IAnswer): void => {
+    /*if (localStorage.getItem("questionIndex") === "0") {
+      console.log("YAY");
+    } else {
+      console.log("NAY");
+    }*/
+
     navigate("/result", {
       state: {
         question: question?.questionText,

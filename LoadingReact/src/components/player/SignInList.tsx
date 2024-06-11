@@ -10,6 +10,8 @@ const PlayList = () => {
     getPlayersFromService();
   }, []);
 
+
+
   const getPlayersFromService = async () => {
     const playersFromService = await PlayService.getAllPlayers();
     setPlayers(playersFromService);
