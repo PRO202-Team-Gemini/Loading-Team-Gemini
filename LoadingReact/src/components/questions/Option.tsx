@@ -54,15 +54,16 @@ const Option = () => {
         selectedAnswer: answer,
       },
     });
-    
-  useEffect(() => {
-    if (timer === 0) {
-      navigate("/result");
-    }
-  }, [timer]);
 
-  const handleClick = (): void => {
-    navigate("/result");
+    useEffect(() => {
+      if (timer === 0) {
+        navigate("/result");
+      }
+    }, [timer]);
+
+    const handleClick = (): void => {
+      navigate("/result");
+    };
   };
 
   return (
@@ -109,6 +110,7 @@ const Option = () => {
 };
 
 export default Option;
+
 /*
  QuestionService.getAllQuestions()
      .then((questions) => {
