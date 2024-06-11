@@ -45,6 +45,12 @@ const Option = () => {
     }
   }, [question]);
 
+  useEffect(() => {
+    if (timer === 0) {
+      navigate("/result");
+    }
+  }, [timer]);
+
   const handleAnswerClick = (answer: IAnswer): void => {
     navigate("/result", {
       state: {
@@ -53,12 +59,6 @@ const Option = () => {
         selectedAnswer: answer,
       },
     });
-
-    useEffect(() => {
-      if (timer === 0) {
-        navigate("/result");
-      }
-    }, [timer]);
   };
 
   return (
