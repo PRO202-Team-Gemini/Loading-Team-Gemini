@@ -31,6 +31,11 @@ const Result: React.FC = () => {
   const totalAnswers = 1;
 
   const handleClick = (): void => {
+    //ADD LOGIC HERE FOR NAVIGATION
+
+
+
+
     navigate("/feedback");
   };
 
