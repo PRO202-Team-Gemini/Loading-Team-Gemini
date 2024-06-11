@@ -32,5 +32,7 @@ Run:
 dotnet watch
 ```
 
+This will open swagger in your browser, this page shows the API's endpoints. You don't have to do anything there.
+
 The project is now running locally on your computer.
 
