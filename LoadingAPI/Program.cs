@@ -6,7 +6,6 @@ using LoadingAPI.Admin;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddDbContext<LoadingContext>
 (options => options.UseSqlite("Data Source=Databases/LoadingDb.db"));
 
@@ -22,7 +21,6 @@ builder.Services.AddCors(
 );
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -30,7 +28,6 @@ WebApplication app = builder.Build();
 app.UseStaticFiles();
 app.UseCors("AllowAll");
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -38,9 +35,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
 
 // ADDED to read from .xlsx and add to database
@@ -49,7 +44,19 @@ using (IServiceScope? serviceScope = app.Services.CreateScope())
     LoadingContext context = serviceScope.ServiceProvider.GetRequiredService<LoadingContext>();
     CsvReaderService csvReaderService = new();
     ConvertFromXlsToCsv converter = new();
+    List<Question> previousQuestions = await context.Questions.ToListAsync();
+    List<Answer> previousAnswers = await context.Answers.ToListAsync();
+    List<CharacterStat> previousCharacterStats = await context.CharacterStat.ToListAsync();
     string filePath = "";
+
+    //CLEAR DATABASE
+    context.Questions.RemoveRange(previousQuestions);
+    context.Database.ExecuteSqlRaw("DELETE FROM sqlite_sequence WHERE name = 'Questions';");
+    context.Answers.RemoveRange(previousAnswers);
+    context.Database.ExecuteSqlRaw("DELETE FROM sqlite_sequence WHERE name = 'Answers';");
+    context.CharacterStat.RemoveRange(previousCharacterStats);
+    context.Database.ExecuteSqlRaw("DELETE FROM sqlite_sequence WHERE name = 'CharacterStat';");
+    await context.SaveChangesAsync();
 
     //QUESTIONS
     converter.Convert("questions.xlsx", "questions.csv");
@@ -61,20 +68,16 @@ using (IServiceScope? serviceScope = app.Services.CreateScope())
         AnswerAmount = q.AnswerAmount
     }).ToList();
 
-    List<Question> previousQuestions = await context.Questions.ToListAsync();
-
-    context.Questions.RemoveRange(previousQuestions);
     context.Questions.AddRange(questions);
-
     File.Delete(filePath);
-    
-        context.SaveChanges();
+    await context.SaveChangesAsync();
 
     //ANSWERS
     converter.Convert("answers.xlsx", "answers.csv");
     filePath = Path.Combine(Environment.CurrentDirectory, @"Admin\Datafiles", "answers.csv");
     List<AnswerModel> answerRecords = csvReaderService.ReadFromCsv<AnswerModel>(filePath);
-    List<Answer> answers = answerRecords.Select(a => new Answer
+
+    List<Answer> answers = answerRecords.Where(a => questions.Any(q => q.Id == a.QuestionId)).Select(a => new Answer
     {
         QuestionId = a.QuestionId,
         AnswerText = a.AnswerText,
@@ -83,18 +86,15 @@ using (IServiceScope? serviceScope = app.Services.CreateScope())
         NextQuestion = a.NextQuestion
     }).ToList();
 
-    List<Answer> previousAnswers = await context.Answers.ToListAsync();
-
-    context.Answers.RemoveRange(previousAnswers);
     context.Answers.AddRange(answers);
-
     File.Delete(filePath);
+    await context.SaveChangesAsync();
 
-    /*
     //CHARACTER STATS
     converter.Convert("characterStat.xlsx", "characterStat.csv");
     filePath = Path.Combine(Environment.CurrentDirectory, @"Admin\Datafiles", "characterStat.csv");
     List<CharacterStatModel> characterStatRecords = csvReaderService.ReadFromCsv<CharacterStatModel>(filePath);
+
     List<CharacterStat> characterStats = characterStatRecords.Select(c => new CharacterStat
     {
         Name = c.Name,
@@ -105,15 +105,9 @@ using (IServiceScope? serviceScope = app.Services.CreateScope())
         Expirience = c.Expirience
     }).ToList();
 
-    List<CharacterStat> previousCharacterStats = await context.CharacterStat.ToListAsync();
-
-    context.CharacterStat.RemoveRange(previousCharacterStats);
     context.CharacterStat.AddRange(characterStats);
-
     File.Delete(filePath);
-    */
-
-    context.SaveChanges();
+    await context.SaveChangesAsync();
 }
 
 app.Run();
