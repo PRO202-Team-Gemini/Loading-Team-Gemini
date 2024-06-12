@@ -3,7 +3,7 @@ namespace LoadingAPI.Models
 	public class CharacterStatModel 
 	{
 		public int? Id { get; set; } = null;
-		public string Name { get; set; }
+		public string? Name { get; set; }
 		public int Level { get; set; }
 		public int Attack { get; set; }
 		public int Strength { get; set; }

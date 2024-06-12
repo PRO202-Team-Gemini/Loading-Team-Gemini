@@ -5,7 +5,7 @@ namespace LoadingAPI.Entities
 	public class CharacterStat 
 	{
 		public int Id {	get; set; }
-		public string Name { get; set; }
+		public string? Name { get; set; }
 		public int Level { get; set; }
 		public int Attack { get; set; }
 		public int Strength { get; set; }
