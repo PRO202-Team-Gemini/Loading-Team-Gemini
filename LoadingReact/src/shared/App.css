@@ -24,11 +24,17 @@ p {
 }
 
 /* Used in Wait */
-/* .app-h1 {
+.app-h1 {
   font-family: "azeret mono", monospace;
   font-size: 5em;
   color: #cb9319;
 }
+
+.card4 {
+  background-color: #3f4e4f;
+  border: 1px solid #cb9319;
+}
+/*
 .app-p {
   font-family: "azeret mono", monospace;
   color: #ffffff;

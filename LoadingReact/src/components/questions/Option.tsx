@@ -10,7 +10,7 @@ const Option = () => {
     questionText: string;
   } | null>(null);
   const [answers, setAnswers] = useState<IAnswer[]>([]);
-  const [timer, setTimer] = useState(60);
+  const [timer, setTimer] = useState(30);
   const [, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
 
@@ -69,7 +69,7 @@ const Option = () => {
           <div
             className="progress-bar bg-success"
             role="progressbar"
-            style={{ width: `${(timer / 60) * 100}%` }}
+            style={{ width: `${(timer / 30) * 100}%` }}
           ></div>
         </div>
         <p className="text-center">{timer} sekunder igjen</p>

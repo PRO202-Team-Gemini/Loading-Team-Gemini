@@ -19,7 +19,7 @@ const Wait = () => {
         <img
           src={`/images/${selectedCaracter}.png`}
           alt="avatar, player character"
-          className="img-fluid card2 rounded shadow p-4"
+          className="img-fluid card4 rounded shadow p-4"
         />
       </section>
       <section className="col-sm-12 col-md-6 d-flex align-items-center justify-content-center">
