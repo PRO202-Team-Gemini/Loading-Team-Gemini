@@ -37,3 +37,16 @@ Swagger displays the API's endpoints. You don't have to do anything on that page
 
 The project is now running locally on your computer.
 
+---
+> [!IMPORTANT]
+> To populate the database with data, see below
+
+To setup questions, answers and characters for the play, 3 excel files has been created which will connect to the database during runtime. 
+These files can be located at LoadingV2/LoadingAPI/Admin/Datafiles.
+
+When the server starts, all previous data from the mentioned databases will be removed and replaced with the data in the corresponding excel file, allowing for easy changes and backup.
+
+OBS!
+Do NOT change the header (first row) in excel as this corresponds to the database columns.
+ALWAYS close the excel sheets before running the server, also note that changes made while the server is running will not be implemented, only when the server restarts.
+
