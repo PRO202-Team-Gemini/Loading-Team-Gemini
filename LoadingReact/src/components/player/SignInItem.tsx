@@ -33,6 +33,9 @@ const SignIn: FC = () => {
         return;
       }
 
+      localStorage.removeItem("questionCount");
+      localStorage.removeItem("questionIndex");
+
       await PlayerService.postPlayer({
         name: playerName,
         character: selectedCaracter,
