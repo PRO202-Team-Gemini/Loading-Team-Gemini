@@ -32,7 +32,8 @@ Run:
 dotnet watch
 ```
 
-This will open swagger in your browser, this page shows the API's endpoints. You don't have to do anything there.
+This will migrate the database to the prosject and open Swagger in your browser.
+Swagger displays the API's endpoints. You don't have to do anything on that page.
 
 The project is now running locally on your computer.
 
