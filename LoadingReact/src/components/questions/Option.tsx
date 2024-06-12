@@ -20,19 +20,17 @@ const Option = () => {
         const questions = await QuestionService.getAllQuestions();
 
         if (localStorage.getItem("questionCount") === null) {
-          localStorage.setItem("questionCount", (questions.length - 1).toString());
+          localStorage.setItem(
+            "questionCount",
+            (questions.length - 1).toString()
+          );
           localStorage.setItem("questionIndex", "0");
         }
 
-        const currentQuestion = questions[parseInt(localStorage.getItem("questionIndex") as string)];
+        const currentQuestion =
+          questions[parseInt(localStorage.getItem("questionIndex") as string)];
 
         setQuestion(currentQuestion);
-
-        /*
-        const randomQuestion =
-          questions[Math.floor(Math.random() * questions.length)];
-        setQuestion(randomQuestion);
-         */
 
         const fetchedAnswers = await AnswerService.getAnswersByQuestionId(
           currentQuestion.id
