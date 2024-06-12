@@ -1,5 +1,12 @@
 # Project-Loading
 
+> [!IMPORTANT]
+> To run this project locally on your device, you'll need to follow these steps:
+
+First you'll need to install npm.
+Open the integrated terminal in "LoadingReact" folder.
+Run:
+> npm install
 
 ## Code structure 
 

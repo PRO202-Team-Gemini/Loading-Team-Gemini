@@ -1,11 +1,10 @@
-import React from "react";
-import CreatePlayer from "../components/play/CreatePlayer.jsx";
+import SignIn from "../components/player/SignInItem.js";
 
 const SignInPage = () => {
   return (
-    <div>
-      <CreatePlayer />
-    </div>
+    <section>
+      <SignIn />
+    </section>
   );
 };
 

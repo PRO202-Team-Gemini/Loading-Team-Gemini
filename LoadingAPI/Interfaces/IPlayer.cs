@@ -1,5 +1,3 @@
-using System;
-
 namespace LoadingAPI.Interfaces
 {
     // Player er user.

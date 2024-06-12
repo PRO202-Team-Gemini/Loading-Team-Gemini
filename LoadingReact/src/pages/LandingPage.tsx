@@ -1,8 +1,11 @@
-import React from "react";
-import Landing from "../components/Landing";
+import Landing from "../components/landing/Landing";
 
 const LandingPage = () => {
-  return <Landing />;
+  return (
+    <section>
+      <Landing />
+    </section>
+  );
 };
 
 export default LandingPage;

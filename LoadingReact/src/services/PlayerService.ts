@@ -4,8 +4,6 @@ import { IPlayer } from "../interfaces/IPlayer";
 const PlayerService = (() => {
   // playerController er en string som inneholder URL-en til API-et som brukes for å hente ut brukere
   const playerController = "http://localhost:5157/api/Players";
-  // imageUrl
-  //const imageUrl = "";
 
   // Promise<IPlayer[]> betyr at metoden returnerer en Promise som inneholder et array av IPlayer-objekter, og om det ikke er noen IPlayer-objekter, returneres et tomt array.
   const getAllPlayers = async (): Promise<IPlayer[]> => {
@@ -33,19 +31,8 @@ const PlayerService = (() => {
     try {
       const result = await axios.post(playerController, newPlayer);
       console.log(result);
-
-      /* const formData = new FormData();
-    formData.append("formFile", image);
-    // Send image to web api
-    const uploadResult = await axios({
-        url: imageUploadController,
-        method: 'POST',
-        data: formData,
-        headers: {'Content-Type': 'multipart/form-data'} // headers allows us to send form data
-    });
-    formData.delete('formFile'); */
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
     }
   };
 

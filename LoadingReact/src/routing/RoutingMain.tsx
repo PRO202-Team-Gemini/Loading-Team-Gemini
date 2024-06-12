@@ -1,32 +1,24 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import MainNavigation from "../shared/MainNavigation";
-import {
-  LandingPage,
-  SignInPage,
-  LoadingPlayersPage,
-  WaitPage,
-  OptionPage,
-  ResultPage,
-  StatsPage,
-  MapPage,
-  FeedbackPage,
-  TurnPhonePage,
-} from "../pages";
-import React from "react";
+import LandingPage from "../pages/LandingPage";
+import TurnPhonePage from "../pages/TurnPhonePage";
+import SignInPage from "../pages/SignInPage";
+import LoadingPlayersPage from "../pages/LoadingPlayersPage";
+import WaitPage from "../pages/WaitPage";
+import OptionPage from "../pages/OptionPage";
+import ResultPage from "../pages/ResultPage";
+import StatsPage from "../pages/StatsPage";
+import MapPage from "../pages/MapPage";
+import FeedbackPage from "../pages/FeedbackPage";
 
 const RoutingMain = () => {
   return (
     <BrowserRouter>
-      <header>
-        <MainNavigation></MainNavigation>
-      </header>
-
       <main className="container">
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="turnPhone" element={<TurnPhonePage />} />
           <Route path="signIn" element={<SignInPage />} />
-          <Route path="loadingPlayers" element={<LoadingPlayersPage />} />
+          <Route path="waiting-room" element={<LoadingPlayersPage />} />
           <Route path="wait" element={<WaitPage />} />
           <Route path="option" element={<OptionPage />} />
           <Route path="result" element={<ResultPage />} />
